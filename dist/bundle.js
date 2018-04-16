@@ -1,0 +1,87 @@
+/******/(function(modules) {
+/******/	var installedModules = {};
+/******/	function require(moduleId) {
+/******/		if(installedModules[moduleId])
+/******/			return installedModules[moduleId].exports;
+/******/		var module = installedModules[moduleId] = {
+/******/			exports: {}
+/******/		};
+/******/		modules[moduleId](module, module.exports, require);
+/******/		return module.exports;
+/******/	}
+/******/	return require("/Users/mac/Desktop/code/webpack/simplepack-byName/src/index.js");
+/******/})
+/******/({
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byName/src/index.js": function(module, exports, require) {
+
+let a = require('/Users/mac/Desktop/code/webpack/simplepack-byName/src/a.js');
+let b = require('/Users/mac/Desktop/code/webpack/simplepack-byName/src/b.js');
+let c = require('/Users/mac/Desktop/code/webpack/simplepack-byName/src/c.js');
+let d = require('/Users/mac/Desktop/code/webpack/simplepack-byName/src/dir/d.js');
+
+a();
+b();
+c();
+d();
+
+/******/},
+/******/
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byName/src/a.js": function(module, exports, require) {
+
+// module a
+
+module.exports = function () {
+    console.log('a')
+};
+
+/******/},
+/******/
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byName/src/b.js": function(module, exports, require) {
+
+// module b
+let c = require('/Users/mac/Desktop/code/webpack/simplepack-byName/src/c.js');
+
+module.exports = function () {
+    console.log('b');
+    console.log('b中的c');
+    c();
+    console.log('b中的c');
+};
+
+/******/},
+/******/
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byName/src/c.js": function(module, exports, require) {
+
+// module c
+
+module.exports = function () {
+    console.log('c')
+};
+
+/******/},
+/******/
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byName/src/dir/d.js": function(module, exports, require) {
+
+// module d
+
+let a = require('/Users/mac/Desktop/code/webpack/simplepack-byName/src/dir/a.js');
+
+module.exports = function () {
+    console.log('d');
+    a();
+};
+
+/******/},
+/******/
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byName/src/dir/a.js": function(module, exports, require) {
+
+
+// module a2
+
+module.exports = function () {
+    console.log('a2')
+};
+
+/******/},
+/******/
+/******/})
