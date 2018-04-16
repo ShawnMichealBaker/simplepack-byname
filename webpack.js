@@ -7,7 +7,7 @@ const templateSingle = fs.readFileSync(path.join(__dirname, 'templateSingle.js')
 webpack();
 
 function webpack() {
-    const context = '/Users/mac/Desktop/code/webpack/simplepack-byName/';
+    const context = '/Users/mac/Desktop/code/webpack/simplepack-byname/';
     const entry = 'src/index.js';
     const output = 'dist/bundle.js';
     // 分析模块间的依赖关系,生成模块依赖关系
