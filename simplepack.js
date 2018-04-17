@@ -16,7 +16,7 @@ function webpack() {
     let buffer = [];
     let filename = path.resolve(context, output);
     // 把require(0) 改成 require(context+entry)
-    let index = templateSingle.indexOf('0')
+    let index = templateSingle.indexOf('0');
     let buf1 = templateSingle.slice(0, index);
     let buf3 = templateSingle.slice(index + 1, templateSingle.length);
     buffer.push(buf1, '"' + context + entry + '"', buf3);
