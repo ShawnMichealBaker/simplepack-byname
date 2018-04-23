@@ -142,7 +142,7 @@ function writeModule(depTree) {
         //let module = depTree.modulesById[moduleName];
         buffer.push('/******/');
         buffer.push('"' + moduleName + '"');
-        buffer.push(': function(module, exports, require) {\n\n');
+        buffer.push(': function(module, require) {\n\n');
         // 调用此方法,拼接每一个具体的模块的内部内容
         buffer.push(depTree.modules[moduleName].source);
         buffer.push('\n\n/******/},\n/******/\n');

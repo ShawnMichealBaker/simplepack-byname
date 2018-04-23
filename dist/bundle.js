@@ -3,13 +3,13 @@
 /******/		var module = {
 /******/			exports: {}
 /******/		};
-/******/		modules[moduleId](module, module.exports, require);
+/******/		modules[moduleId](module, require);
 /******/		return module.exports;
 /******/	}
 /******/	return require("/Users/mac/Desktop/code/webpack/simplepack-byname/src/index.js");
 /******/})
 /******/({
-/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/index.js": function(module, exports, require) {
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/index.js": function(module, require) {
 
 let a = require('/Users/mac/Desktop/code/webpack/simplepack-byname/src/a.js');
 let b = require('/Users/mac/Desktop/code/webpack/simplepack-byname/src/b.js');
@@ -23,7 +23,7 @@ d();
 
 /******/},
 /******/
-/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/a.js": function(module, exports, require) {
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/a.js": function(module, require) {
 
 // module a
 
@@ -33,7 +33,7 @@ module.exports = function () {
 
 /******/},
 /******/
-/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/b.js": function(module, exports, require) {
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/b.js": function(module, require) {
 
 // module b
 let c = require('/Users/mac/Desktop/code/webpack/simplepack-byname/src/c.js');
@@ -47,7 +47,7 @@ module.exports = function () {
 
 /******/},
 /******/
-/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/c.js": function(module, exports, require) {
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/c.js": function(module, require) {
 
 // module c
 
@@ -57,7 +57,7 @@ module.exports = function () {
 
 /******/},
 /******/
-/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/dir/d.js": function(module, exports, require) {
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/dir/d.js": function(module, require) {
 
 // module d
 
@@ -70,7 +70,7 @@ module.exports = function () {
 
 /******/},
 /******/
-/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/dir/a.js": function(module, exports, require) {
+/******/"/Users/mac/Desktop/code/webpack/simplepack-byname/src/dir/a.js": function(module, require) {
 
 
 // module a2
@@ -82,8 +82,3 @@ module.exports = function () {
 /******/},
 /******/
 /******/})
-
-var obj = {
-    "aaa":function(){},
-    "bbb":function(){}
-}

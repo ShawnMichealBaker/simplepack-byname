@@ -3,13 +3,13 @@
 /******/		var module = {
 /******/			exports: {}
 /******/		};
-/******/		modules[moduleId](module, module.exports, require);
+/******/		modules[moduleId](module, require);
 /******/		return module.exports;
 /******/	}
 /******/	return require(0);
 /******/})
 /******/({
-/******/0: function(module, exports, require) {
+/******/0: function(module, require) {
 
 let a = require(/* /Users/mac/Desktop/code/webpack/my-webpack/src/a.js */1);
 let b = require(/* /Users/mac/Desktop/code/webpack/my-webpack/src/b.js */2);
@@ -19,7 +19,7 @@ b();
 
 /******/},
 /******/
-/******/1: function(module, exports, require) {
+/******/1: function(module, require) {
 
 // module a
 
@@ -29,7 +29,7 @@ module.exports = function () {
 
 /******/},
 /******/
-/******/2: function(module, exports, require) {
+/******/2: function(module, require) {
 
 // module b
 
