@@ -11,7 +11,7 @@ function webpack() {
     const entry = 'src/index.js';
     const output = 'dist/bundle.js';
     // 分析模块间的依赖关系,生成模块依赖关系
-    let depTree = buildDeps(entry, context);
+    let depTree = buildDeps(entry, context);//1. 分析依赖树模型
     // 拼接生成目标JS文件
     let buffer = [];
     let filename = path.resolve(context, output);
@@ -23,7 +23,7 @@ function webpack() {
     // 开始添加传入的参数
     buffer.push('/******/({\n');
     // 拼接modules进对应的chunk中
-    let chunks = writeModule(depTree);
+    let chunks = writeModule(depTree);//2. 按照依赖树模型 去写函数
     buffer.push(chunks);
     buffer.push('/******/})');
     buffer = buffer.join('');
@@ -41,11 +41,15 @@ function webpack() {
  */
 //function buildDeps(entry, context) {
 function buildDeps(entry, context) {
+    //user/docuemnt/github 当前项目所在的上下文
+    //src/index.js 入口文件在当前项目中的路径
+    //获取入口文件的绝对路径
+    //入口文件的上下文
     let depTree = {
         modules: {},// 通过模块名索引各个模块对象
     };
-    absoluteEntry = path.resolve(context, entry);//获取入口文件的绝对路径
-    context = path.dirname(absoluteEntry);//获取入口文件所在的上下文
+    absoluteEntry = path.resolve(context, entry);//获取入口文件的绝对路径 /user/docuemnt/github/src/index.js
+    context = path.dirname(absoluteEntry);//获取入口文件所在的上下文 /use/docuemnt/github/src/
     // 构造依赖树模型的
     depTree = parseModule(depTree, absoluteEntry, context);
     return depTree;
@@ -63,7 +67,7 @@ function parseModule(depTree, moduleName, context) {
     // 根据绝对路径，读取文件源码
     let source = fs.readFileSync(moduleName).toString();
     // 将源码中依赖的模块转换成绝对路径
-    source = parseRequireName(source, context);
+    source = parseRequireName(source, context);//把require里面的相对路径都变成绝对路径
     // 将源码转换为对象模型 模型中记录了依赖和源码
     let parsedModule = parse(source);
     // 放到depTree上
@@ -75,7 +79,7 @@ function parseModule(depTree, moduleName, context) {
     if (requireModules && requireModules.length > 0) {
         for (let require of requireModules) {
             // 切换到依赖的文件所在的上下文中
-            let tempContext = path.dirname(require.name);
+            let tempContext = path.dirname(require.name);//依赖的模块所在的目录
             depTree = parseModule(depTree, require.name, tempContext);
         }
     }
@@ -87,6 +91,7 @@ function parseModule(depTree, moduleName, context) {
  * @param {string} source 
  */
 function parseRequireName(source, context) {
+    //AST 抽象语法树
     const regEx = /require\(.*\)/g;//require(***)
     var params = [];
     var param;
