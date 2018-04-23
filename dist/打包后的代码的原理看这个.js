@@ -1,9 +1,6 @@
 /******/(function(modules) {
-/******/	var installedModules = {};
 /******/	function require(moduleId) {
-/******/		if(installedModules[moduleId])
-/******/			return installedModules[moduleId].exports;
-/******/		var module = installedModules[moduleId] = {
+/******/		var module = {
 /******/			exports: {}
 /******/		};
 /******/		modules[moduleId](module, module.exports, require);
